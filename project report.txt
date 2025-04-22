@@ -1,0 +1,54 @@
+# Project Report
+
+## Project Overview
+This project is a flight booking application that allows users to search for available flights and make bookings. The application consists of a backend server and a frontend client.
+
+## Backend
+- **Technology Stack**: Node.js, Express.js, MongoDB
+- **Key Features**:
+  - **Flight Search**: Users can search for available flights based on criteria such as departure city, arrival city, departure date, and class.
+  - **Booking System**: Users can book flights, and the system updates the available seats accordingly.
+  - **Database**: MongoDB is used to store flight and booking information.
+  - **Payment Integration**: Integration with the Stripe API for dynamic payment processing.
+
+### Key Files
+- `server/routes/flights.js`: Contains the routes for searching flights and retrieving flight details.
+- `server/routes/bookings.js`: Contains the routes for creating and managing bookings, including payment processing.
+- `server/models/Flight.js`: Defines the schema for flight data.
+- `server/models/Booking.js`: Defines the schema for booking data.
+
+## Frontend
+- **Technology Stack**: React, Material-UI
+- **Key Features**:
+  - **Flight Search Form**: Users can input search criteria to find flights.
+  - **Flight Results Display**: Displays a list of available flights with details such as airline, flight number, departure and arrival cities, and price.
+  - **Booking Interface**: Allows users to proceed with booking a selected flight.
+  - **Payment Integration**: Integration with Stripe payment gateway for processing payments.
+  - **Payment Flow**: Complete payment flow with success and cancellation handling.
+
+### Key Files
+- `client/src/components/FlightSearch.js`: Contains the main component for searching and displaying flights.
+- `client/src/components/BookingForm.js`: Manages the booking process, passenger information, and payment redirection.
+- `client/src/components/BookingSuccess.js`: Handles successful payment processing and updates booking status.
+- `client/src/components/BookingCanceled.js`: Handles canceled payments and allows users to retry.
+
+## Payment Integration
+- **Payment Gateway**: Stripe
+- **Implementation**:
+  - A step-based booking flow that guides users through the booking process
+  - Dynamic payment integration with Stripe Checkout API
+  - Payment amounts are calculated based on actual booking prices
+  - Success and cancel pages to handle payment outcomes
+  - Automatic booking status updates based on payment result
+
+## Additional Information
+- **API Endpoints**:
+  - `GET /api/flights/search/available`: Searches for available flights based on provided criteria.
+  - `POST /api/bookings`: Creates a new booking for a selected flight.
+  - `POST /api/bookings/create-checkout-session/:id`: Creates a Stripe checkout session for a specific booking.
+  - `PATCH /api/bookings/:id/update-status`: Updates the status of a booking (pending, confirmed, canceled).
+
+- **Database Configuration**: The application connects to MongoDB Atlas for data storage.
+
+## Conclusion
+This project demonstrates a full-stack application with a focus on flight booking functionality, integrating a Node.js backend with a React frontend. The application is designed to be user-friendly and efficient in handling flight searches and bookings. The integration with Stripe provides a secure and reliable payment processing solution with dynamic pricing based on the actual booking amount. 
